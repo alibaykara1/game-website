@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Game</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            border: 2px solid #333;
+            background: #111;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            margin-top: 20px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>GODOT GAME MOCKUP</h1>
+    <canvas id="gameCanvas" width="640" height="360"></canvas>
+    <div class="controls">
+        <p>This is a mockup to verify the iframe integration.</p>
+        <button onclick="alert('Game Interacted!')">Click Me (Test Interaction)</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let x = 50;
+        let y = 180;
+        let dx = 2;
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw a moving box
+            ctx.fillStyle = '#6366f1';
+            ctx.fillRect(x, y - 25, 50, 50);
+
+            x += dx;
+            if (x > canvas.width - 50 || x < 0) dx = -dx;
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>
